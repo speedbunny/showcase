@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <table width="40%" align="center">
+            <thead>
+                <tr>
+                <th>Name</th>
+                <th>Price</th>
+
+            </tr>
+            <tr>
+                <td>{{ name }}</td>
+                <td>{{ price }}</td>
+
+            </tr>
+        </table>
+        <p>&nbsp;</p>
+        <h2>The current price of {{symbol}} is <mark>{{ price }}</mark> </h2>
+    </div>
+    <div class="col-md-2"></div>
+{% endblock %}

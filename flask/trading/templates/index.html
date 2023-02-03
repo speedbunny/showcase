@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Your Home Page & Portfolio
+{% endblock %}
+
+{% block main %}
+<div class="col-md-8">
+
+<h2>Home Page & Portfolio</h2>
+<p>&nbsp;</p>
+
+        {% if not shares %}
+            <p>Do you want to <a href="{{ url_for('buy') }}">buy</a> some shares?</p>
+        {% endif %}
+        {% if shares %}
+        <table align="center" width="80%">
+            <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Symbol</th>
+                    <th>Quantity</th>
+                    <th>Strike Price</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through the database entries to display them in this table -->
+                {% for share in shares %}
+            <tr>
+                <td>{{ share.company }}</td>
+                <td>{{ share.symbol }}</td>
+                <td>{{ share.quantity }}</td>
+                <td>{{ share.strike }}</td>
+                <td>{{ share.total }}</td>
+            </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+        <p>&nbsp;</p>
+        <blockquote class="text-left">
+            <h5>Balance (Cash): <mark>{{ cash }}</mark></h4>
+            <h5>Value of Shares: <mark>{{ grand_total }}</mark></h4>
+            <p>Do you want to <a href="{{ url_for('buy') }}">buy</a> more shares?</p>
+        </blockquote>
+    </div>
+    <div class="col-md-2"></div>
+{% endblock %}
